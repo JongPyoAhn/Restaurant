@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFEBCD"
+    >
+
+    <ImageView
+        android:id="@+id/successOrderImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sucessorder"
+        android:layout_above = "@id/successOrderButton"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/side"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/successOrderImage"
+        android:layout_above="@id/successOrderButton"
+        />
+    <Button
+        android:id="@+id/successOrderButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text= "기타 주문하기"
+        android:textColor="#FFFF"
+        android:textSize="20pt"
+        android:layout_centerVertical="true"
+        android:background="@drawable/buttonshape"
+        />
+
+
+</RelativeLayout>

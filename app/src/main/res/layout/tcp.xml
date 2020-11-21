@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFEBCD"
+    >
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:src="@drawable/what"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"/>
+    <TextView
+        android:id="@+id/chatTV"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/ImageView01" />
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chatTV"
+        android:layout_toLeftOf="@id/Button01"
+        android:hint="요구사항을 작성해주세요">
+        <requestFocus/>
+    </EditText>
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="전 송"
+        android:background="@drawable/buttonshape"
+        android:textColor="#FFFF"
+        android:layout_below="@id/chatTV"
+        android:layout_alignParentRight="true" />
+    <TableLayout
+        android:id="@+id/tlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditText01"
+        >
+        <TableRow android:layout_weight="1">
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:id="@+id/b1"
+                android:layout_weight="1"
+                android:text="공기밥"/>
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:id="@+id/b2"
+                android:layout_weight="1"
+                android:text="상추"
+                />
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:id="@+id/b3"
+                android:layout_weight="1"
+                android:text="김치"/>
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:id="@+id/b4"
+                android:layout_weight="1"
+                android:text="라면"/>
+        </TableRow>
+        <TableRow android:layout_weight="1">
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:layout_weight="1"
+                android:text="공기밥"/>
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:layout_weight="1"
+                android:text="상추"/>
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:layout_weight="1"
+                android:text="김치"/>
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:layout_weight="1"
+                android:text="라면"/>
+        </TableRow>
+        <TableRow android:layout_weight="1">
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:layout_weight="1"
+                android:text="공기밥"/>
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:layout_weight="1"
+                android:text="상추"/>
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:layout_weight="1"
+                android:text="김치"/>
+            <Button
+                android:background="@drawable/buttonshape"
+                android:textColor="#FFFF"
+                android:layout_weight="1"
+                android:text="라면"/>
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:id="@+id/aa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        />
+</RelativeLayout>
