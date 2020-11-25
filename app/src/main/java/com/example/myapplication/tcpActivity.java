@@ -83,7 +83,7 @@ public class tcpActivity extends AppCompatActivity {
             orderFood=tempOrder;
             countFood=tempCount;
             totalPrice=tempPrice;
-            str_db = "테이블 주문 번호 : "+"1"+"주문한 음식 : "+orderFood+"음식 개수 : "+countFood + "총 액 : "+totalPrice;
+            str_db = "테이블 주문 번호 : "+"1"+" 주문한 음식 : "+orderFood+" 음식 개수 : "+countFood + "총 액 : "+totalPrice;
         }
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
