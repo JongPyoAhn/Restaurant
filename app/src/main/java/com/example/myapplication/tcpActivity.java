@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -27,13 +28,22 @@ public class tcpActivity extends AppCompatActivity {
     Socket socket;
     private String ip = "172.30.1.55"; // IP 주소
     private int port = 9999; // PORT번호
+
+    public int selectMsg;
+    
+    //DB정보 담을 변수
+    private String orderFood;
+    private int countFood;
+    private int totalPrice;
+    private String str_db;
+
     private EditText et;
     private TextView msgTV;
     private Button b1;
     private Button b2;
     private Button b3;
     private Button b4;
-    public int selectMsg;
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -50,6 +60,7 @@ public class tcpActivity extends AppCompatActivity {
         setContentView(R.layout.tcp);
         mHandler = new Handler();
 
+
         et = (EditText) findViewById(R.id.EditText01);
         Button btn = (Button) findViewById(R.id.Button01);
       //  final TextView tv = (TextView) findViewById(R.id.TextView01);
@@ -58,6 +69,22 @@ public class tcpActivity extends AppCompatActivity {
         b2=(Button) findViewById(R.id.b2);
         b3=(Button) findViewById(R.id.b3);
         b4=(Button) findViewById(R.id.b4);
+
+        DbOpenHelper2 mDbOpenHelper2 = new DbOpenHelper2(this);
+        mDbOpenHelper2.open();
+        mDbOpenHelper2.create();
+        Cursor iCursor = mDbOpenHelper2.selectColumns();
+        //음식 쭉 돌리면서 검색
+        while (iCursor.moveToNext()) {
+            String tempOrder = iCursor.getString(0);
+            int tempCount = iCursor.getInt(1);
+            int tempPrice = iCursor.getInt(2);
+
+            orderFood=tempOrder;
+            countFood=tempCount;
+            totalPrice=tempPrice;
+            str_db = "테이블 주문 번호 : "+"1"+"주문한 음식 : "+orderFood+"음식 개수 : "+countFood + "총 액 : "+totalPrice;
+        }
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (et.getText().toString() != null || !et.getText().toString().equals("")) {
@@ -108,7 +135,7 @@ public class tcpActivity extends AppCompatActivity {
                 switch(selectMsg)
                 {
                     case 1:
-                        sndMsg = b1.getText().toString();
+                        sndMsg = str_db;
                         break;
                     case 2:
                         sndMsg = b2.getText().toString();
@@ -122,6 +149,7 @@ public class tcpActivity extends AppCompatActivity {
                     case 5:
                         sndMsg = et.getText().toString();
                         break;
+
                 }
                // String sndMsg = et.getText().toString();
                 Log.d("=============", sndMsg);

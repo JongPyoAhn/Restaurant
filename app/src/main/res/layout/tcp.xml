@@ -50,7 +50,7 @@
                 android:textColor="#FFFF"
                 android:id="@+id/b1"
                 android:layout_weight="1"
-                android:text="공기밥"/>
+                android:text="주문"/>
             <Button
                 android:background="@drawable/buttonshape"
                 android:textColor="#FFFF"

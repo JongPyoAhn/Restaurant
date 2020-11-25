@@ -24,12 +24,11 @@ import java.sql.Statement;
 
 public class foodActivity extends AppCompatActivity {
     public int counter1 = 0;//첫번째 음식 주문 갯수 카운트
+    public int sumPrice; //가격의 총합
+    private String Name1;
    private int Price1; //순대국 가격(DB로 가져올거임)
     private boolean menuSelect1=true; //첫번째 음식을 주문 했는지?
-    public int sumPrice1; // 첫번째 음식줄 가격의 총합
-//    private int num=0; //데이터베이스 커서에서 음식가져오려고 쓰는 변수
-    private String Name1;
-//    public static String[] transArray1 = new String[3];//TCP로 전송하기위해서 저장해두기.
+    private DbOpenHelper2 mDBOpenHelper2;// sales테이블 DB사용
 
     private ImageView plusImg;
     private TextView numberFood1;
@@ -68,7 +67,6 @@ public class foodActivity extends AppCompatActivity {
         mDbOpenHelper.create();
         Cursor iCursor = mDbOpenHelper.selectColumns();
         //음식 쭉 돌리면서 검색
-//        iCursor.moveToFirst();
         while (iCursor.moveToNext()) {
             int tempID = iCursor.getInt(0);
             int tempNo = iCursor.getInt(1);
@@ -76,12 +74,15 @@ public class foodActivity extends AppCompatActivity {
             int tempPrice = iCursor.getInt(3);
 //
             // 음식번호가 1번이면 1번 가격에 저장.
+            // 음식번호란? 코드에서 편하게 분류하려고 1번순대국의 
+            // 이름과 가격을 변수에 넣고 UI에 표시하기 위함.
             if (tempNo==1) {
                 Price1 = tempPrice;
                 Name1 = tempName;
             }
         }
 //        priceGetting1();
+        mDBOpenHelper2 = new DbOpenHelper2(this);
         //주문버튼 구현
         order.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -91,7 +92,12 @@ public class foodActivity extends AppCompatActivity {
                 }
                 else {
                     //주문음식, 음식갯수, 총액수 얻기
+                    Name1 = selectedFood1.getText().toString();
+                    counter1 = Integer.parseInt(numberFood1.getText().toString());
 
+                    try{mDBOpenHelper2.open();
+                    mDBOpenHelper2.insertColumn(Name1,counter1,sumPrice);
+                    }catch(SQLException e){e.printStackTrace();}
                     Intent intent = new Intent(getApplicationContext(), sucessorderActivity.class);
                     startActivity(intent);
                 }
@@ -128,9 +134,9 @@ public class foodActivity extends AppCompatActivity {
 
     //(+,-)에따른 가격 셋팅
     public void priceSetting1(){
-        sumPrice1=Price1*counter1;
+        sumPrice=Price1*counter1;
 
-        price.setText(String.valueOf(sumPrice1)+"원");
+        price.setText(String.valueOf(sumPrice)+"원");
     }
     //주문음식, 음식갯수, 총액수
     //Name1
