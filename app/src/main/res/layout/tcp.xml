@@ -43,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/EditText01"
+        android:layout_above="@id/editIP"
         >
         <TableRow android:layout_weight="1">
             <Button
@@ -121,6 +122,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/enterIP"
         android:layout_weight="1"
         android:hint="ip를 입력해주세요"
         />
@@ -128,13 +131,19 @@
         android:id="@+id/enterIP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/editIP"
+        android:layout_toLeftOf="@id/port"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/buttonshape"
+        android:text="입력"
+        android:textColor="#FFF"
         />
     <TextView
+        android:id="@+id/port"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="포트번호 : 9999"
-        android:layout_toRightOf="@id/enterIP"
-
+        android:textSize="15pt"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         />
 </RelativeLayout>
