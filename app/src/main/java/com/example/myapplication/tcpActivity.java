@@ -26,7 +26,7 @@ public class tcpActivity extends AppCompatActivity {
 
     private Handler mHandler;
     Socket socket;
-    private String ip = "172.30.1.55"; // IP 주소
+    private String ip ;//= "172.30.1.55"; // IP 주소
     private int port = 9999; // PORT번호
     private DbOpenHelper2 mDbOpenHelper2;
     public int selectMsg;
@@ -35,6 +35,7 @@ public class tcpActivity extends AppCompatActivity {
     private String orderFood;
     private int countFood;
     private int totalPrice;
+    private int tableNo;
     private String str_db;
 
     private EditText et;
@@ -43,7 +44,8 @@ public class tcpActivity extends AppCompatActivity {
     private Button b2;
     private Button b3;
     private Button b4;
-
+    private EditText editIP;
+    private Button enterIP;
     @Override
     protected void onStop() {
         super.onStop();
@@ -71,7 +73,8 @@ public class tcpActivity extends AppCompatActivity {
         b2=(Button) findViewById(R.id.b2);
         b3=(Button) findViewById(R.id.b3);
         b4=(Button) findViewById(R.id.b4);
-
+        editIP= (EditText)findViewById(R.id.editIP);
+        enterIP = (Button)findViewById(R.id.enterIP);
         mDbOpenHelper2 = new DbOpenHelper2(this);
         mDbOpenHelper2.open();
         mDbOpenHelper2.create();
@@ -86,6 +89,7 @@ public class tcpActivity extends AppCompatActivity {
             orderFood=tempOrder;
             countFood=tempCount;
             totalPrice=tempPrice;
+            tableNo = tempTable;
             str_db = "테이블 주문 번호: "+tempTable+" 주문한 음식: "+orderFood+" 음식 개수: "+countFood + " 총 액: "+totalPrice;
         }
         mDbOpenHelper2.close();
@@ -126,6 +130,11 @@ public class tcpActivity extends AppCompatActivity {
                 th.start();
             }
         });
+        enterIP.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+               ip= editIP.getText().toString();
+            }
+        });
     }
 
     //액티비티 파괴될 때
@@ -154,16 +163,16 @@ public class tcpActivity extends AppCompatActivity {
                         sndMsg = str_db;
                         break;
                     case 2:
-                        sndMsg = b2.getText().toString();
+                        sndMsg = "테이블 주문 번호: "+tableNo+" 요구사항 : "+b2.getText().toString();
                         break;
                     case 3:
-                        sndMsg = b3.getText().toString();
+                        sndMsg = "테이블 주문 번호: "+tableNo+" 요구사항 : "+b3.getText().toString();
                         break;
                     case 4:
-                        sndMsg = b4.getText().toString();
+                        sndMsg = "테이블 주문 번호: "+tableNo+" 요구사항 : "+b4.getText().toString();
                         break;
                     case 5:
-                        sndMsg = et.getText().toString();
+                        sndMsg = "테이블 주문 번호: "+tableNo+" 요구사항 : "+et.getText().toString();
                         break;
 
                 }
