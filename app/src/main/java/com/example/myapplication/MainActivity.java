@@ -10,12 +10,13 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.ImageButton;
 
 
 public class MainActivity extends AppCompatActivity {
-    public int Tablenum;
+    public static int Tablenum;
     public static final int sub1 = 1001;
     public static SQLiteDatabase mDB;
     private DbOpenHelper mDBOpenHelper;
@@ -24,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.number);
-
+        String databasePath = Environment.getDataDirectory()+"/data/com.example.myapplication/databases/Database(SQLite).db";
+        SQLiteDatabase database = this.openOrCreateDatabase(databasePath, Context.MODE_PRIVATE,null);
+        database.execSQL("DROP TABLE sales");
         ImageButton number1 = (ImageButton) findViewById(R.id.number1);
         ImageButton number2 = ( ImageButton)findViewById(R.id.number2);
         ImageButton number3 = ( ImageButton)findViewById(R.id.number3);

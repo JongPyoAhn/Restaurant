@@ -65,10 +65,10 @@ public class foodActivity extends AppCompatActivity {
         DbOpenHelper mDbOpenHelper = new DbOpenHelper(this);
         mDbOpenHelper.open();
         mDbOpenHelper.create();
+
         Cursor iCursor = mDbOpenHelper.selectColumns();
         //음식 쭉 돌리면서 검색
         while (iCursor.moveToNext()) {
-            int tempID = iCursor.getInt(0);
             int tempNo = iCursor.getInt(1);
             String tempName = iCursor.getString(2);
             int tempPrice = iCursor.getInt(3);
@@ -96,7 +96,7 @@ public class foodActivity extends AppCompatActivity {
                     counter1 = Integer.parseInt(numberFood1.getText().toString());
 
                     try{mDBOpenHelper2.open();
-                    mDBOpenHelper2.insertColumn(Name1,counter1,sumPrice);
+                    mDBOpenHelper2.insertColumn(Name1,counter1,sumPrice,MainActivity.Tablenum);
                     }catch(SQLException e){e.printStackTrace();}
                     Intent intent = new Intent(getApplicationContext(), sucessorderActivity.class);
                     startActivity(intent);

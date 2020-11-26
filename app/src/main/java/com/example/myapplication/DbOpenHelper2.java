@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 import android.view.View;
 
 public class DbOpenHelper2 {
@@ -52,15 +53,20 @@ public class DbOpenHelper2 {
     public void close(){
         mDB.close();
     }
-    public static long insertColumn(String orderFood, int countFood, int totalFood){
+    public static long insertColumn(String orderFood, int countFood, int totalFood, int tableNo){
         ContentValues values = new ContentValues();
         values.put(DataBases.CreateDB.ORDERFOOD, orderFood);
         values.put(DataBases.CreateDB.COUNTFOOD, countFood);
         values.put(DataBases.CreateDB.TOTALPRICE, totalFood);
+        values.put(DataBases.CreateDB.TABLENO, tableNo);
         return mDB.insert(DataBases.CreateDB._TABLENAME1,null,values);
     }
     public static Cursor selectColumns(){
         return mDB.query(DataBases.CreateDB._TABLENAME1, null, null,null,null,null,null,null);
+    }
+    //DB컬럼전체삭제
+    public void deleteAllColumns(){
+        mDB.delete(DataBases.CreateDB._TABLENAME1,null,null);
     }
 
 }

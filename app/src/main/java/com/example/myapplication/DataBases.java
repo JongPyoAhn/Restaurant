@@ -13,11 +13,13 @@ public class DataBases {
                         +FOODNO+" integer not null ,"
                         +FNAME+" text not null , "
                         +FPRICE+" integer not null)";
+
         public static final String ORDERFOOD = "orderFood";
         public static final String COUNTFOOD = "countFood";
         public static final String TOTALPRICE = "totalPrice";
+        public static final String TABLENO = "tableNo";
         public static final String _TABLENAME1 = "sales";
-        public static final String _CREATE1 = "create table if not exists "+_TABLENAME1+"("+_ID+" integer primary key autoincrement, " +ORDERFOOD+" text not null ," +COUNTFOOD+" integer not null , " +TOTALPRICE+" integer not null)";
-
+        public static final String _CREATE1 = "create table if not exists "+_TABLENAME1+"("+_ID+" integer primary key autoincrement, " +ORDERFOOD+" text not null ," +COUNTFOOD+" integer not null , " +TOTALPRICE+" integer not null ," +TABLENO+" integer not null)";
+//        public static final String _CREATE1 = "create table if not exists "+_TABLENAME1+"("+_ID+" integer primary key autoincrement, " +ORDERFOOD+" text not null ," +COUNTFOOD+" integer not null , " +TOTALPRICE+" integer not null)";
     }
 }

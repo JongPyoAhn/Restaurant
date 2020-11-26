@@ -28,7 +28,7 @@ public class tcpActivity extends AppCompatActivity {
     Socket socket;
     private String ip = "172.30.1.55"; // IP 주소
     private int port = 9999; // PORT번호
-
+    private DbOpenHelper2 mDbOpenHelper2;
     public int selectMsg;
     
     //DB정보 담을 변수
@@ -61,6 +61,8 @@ public class tcpActivity extends AppCompatActivity {
         mHandler = new Handler();
 
 
+
+
         et = (EditText) findViewById(R.id.EditText01);
         Button btn = (Button) findViewById(R.id.Button01);
       //  final TextView tv = (TextView) findViewById(R.id.TextView01);
@@ -70,21 +72,23 @@ public class tcpActivity extends AppCompatActivity {
         b3=(Button) findViewById(R.id.b3);
         b4=(Button) findViewById(R.id.b4);
 
-        DbOpenHelper2 mDbOpenHelper2 = new DbOpenHelper2(this);
+        mDbOpenHelper2 = new DbOpenHelper2(this);
         mDbOpenHelper2.open();
         mDbOpenHelper2.create();
         Cursor iCursor = mDbOpenHelper2.selectColumns();
         //음식 쭉 돌리면서 검색
         while (iCursor.moveToNext()) {
-            String tempOrder = iCursor.getString(0);
-            int tempCount = iCursor.getInt(1);
-            int tempPrice = iCursor.getInt(2);
+            String tempOrder = iCursor.getString(1);
+            int tempCount = iCursor.getInt(2);
+            int tempPrice = iCursor.getInt(3);
+            int tempTable = iCursor.getInt(4);
 
             orderFood=tempOrder;
             countFood=tempCount;
             totalPrice=tempPrice;
-            str_db = "테이블 주문 번호 : "+"1"+" 주문한 음식 : "+orderFood+" 음식 개수 : "+countFood + "총 액 : "+totalPrice;
+            str_db = "테이블 주문 번호: "+tempTable+" 주문한 음식: "+orderFood+" 음식 개수: "+countFood + " 총 액: "+totalPrice;
         }
+        mDbOpenHelper2.close();
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (et.getText().toString() != null || !et.getText().toString().equals("")) {
@@ -123,6 +127,18 @@ public class tcpActivity extends AppCompatActivity {
             }
         });
     }
+
+    //액티비티 파괴될 때
+    @Override
+    protected void onDestroy() {
+        mDbOpenHelper2.open();
+        mDbOpenHelper2.create();
+        mDbOpenHelper2.deleteAllColumns();
+        super.onDestroy();
+
+    }
+
+
     class ConnectThread extends Thread{
 
         public void run(){
