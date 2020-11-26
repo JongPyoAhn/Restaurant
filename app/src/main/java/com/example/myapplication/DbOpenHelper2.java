@@ -10,7 +10,7 @@ import android.provider.ContactsContract;
 import android.view.View;
 
 public class DbOpenHelper2 {
-    private static final String DATABASE_NAME = "Database(SQLite).db";
+    private static final String DATABASE_NAME = "DatabaseReal(SQLite).db";
     private static final int DATABASE_VERSION = 1;
     public static SQLiteDatabase mDB;
     private DatabaseHelper mDBHelper;

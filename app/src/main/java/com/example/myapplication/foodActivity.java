@@ -98,7 +98,7 @@ public class foodActivity extends AppCompatActivity {
                     try{mDBOpenHelper2.open();
                     mDBOpenHelper2.insertColumn(Name1,counter1,sumPrice,MainActivity.Tablenum);
                     }catch(SQLException e){e.printStackTrace();}
-                    Intent intent = new Intent(getApplicationContext(), sucessorderActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), tcpActivity.class);
                     startActivity(intent);
                 }
             }

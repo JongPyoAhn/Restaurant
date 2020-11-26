@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.number);
-        String databasePath = Environment.getDataDirectory()+"/data/com.example.myapplication/databases/Database(SQLite).db";
-        SQLiteDatabase database = this.openOrCreateDatabase(databasePath, Context.MODE_PRIVATE,null);
-        database.execSQL("DROP TABLE sales");
+//        String databasePath = Environment.getDataDirectory()+"/data/com.example.myapplication/databases/Database(SQLite).db";
+//        SQLiteDatabase database = this.openOrCreateDatabase(databasePath, Context.MODE_PRIVATE,null);
+//        database.execSQL("DROP TABLE sales");
         ImageButton number1 = (ImageButton) findViewById(R.id.number1);
         ImageButton number2 = ( ImageButton)findViewById(R.id.number2);
         ImageButton number3 = ( ImageButton)findViewById(R.id.number3);

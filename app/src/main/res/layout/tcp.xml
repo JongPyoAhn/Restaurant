@@ -116,11 +116,25 @@
                 android:text="라면"/>
         </TableRow>
     </TableLayout>
-    <TextView
-        android:id="@+id/aa"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/editIP"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_weight="1"
+        android:hint="ip를 입력해주세요"
+        />
+    <Button
+        android:id="@+id/enterIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/editIP"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="포트번호 : 9999"
+        android:layout_toRightOf="@id/enterIP"
+
         />
 </RelativeLayout>
